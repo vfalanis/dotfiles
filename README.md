@@ -28,7 +28,6 @@ foo@bar:~$ sudo yay -S ttf-iosevka
 foo
 ```
 
-TBC
 
 ## Screenshot
 
