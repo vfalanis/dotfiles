@@ -12,6 +12,24 @@ Config files for:
 - xinitrc
 - zshcrc
 
+## Fonts
+
+- Fantasque Sans
+
+```console
+foo@bar:~$ sudo pacman -S ttf-fantasque-sans-mono
+foo
+```
+
+- Iosevka
+
+```console
+foo@bar:~$ sudo yay -S ttf-iosevka
+foo
+```
+
+TBC
+
 ## Screenshot
 
 ![Preview](https://github.com/vfalanis/dotfiles/blob/master/Screenshot.png)
