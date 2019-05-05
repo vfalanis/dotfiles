@@ -9,6 +9,13 @@ exec --no-startup-id wal -R
 # Compton
 exec --no-startup-id compton -b
 
+# Albert
+exec --no-startup-id albert
+
+# Polybar
+
+exec --no-startup-id polybar -c ~/.config/polybar/config.ini main 
+
 ##############
 #	     #
 # AESTHETICS #
