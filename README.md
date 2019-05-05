@@ -12,3 +12,6 @@ Config files for:
 - xinitrc
 - zshcrc
 
+## Screenshot
+
+![Preview](https://github.com/vfalanis/dotfiles/blob/master/Screenshot.png)
