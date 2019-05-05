@@ -1,0 +1,225 @@
+###########
+#         #
+# STARTUP #
+#         #
+###########
+# Pywal
+exec --no-startup-id wal -R
+
+# Compton
+exec --no-startup-id compton -b
+
+##############
+#	     #
+# AESTHETICS #
+#            #
+##############
+# Font ( dont confuse this with terminal font)
+font pango:monospace 8
+
+# Assign pywal colors
+set_from_resource $fg i3wm.color7 #f0f0f0
+set_from_resource $bg i3wm.color0 #f0f0f0
+
+# Borders
+default_border pixel 10
+default_floating_border pixel 10
+
+# Gaps
+gaps inner 10
+gaps outer 15
+
+# class                 border  backgr. text indicator child_border
+client.focused          $bg     $bg     $fg  $bg       $bg
+client.focused_inactive $bg     $bg     $fg  $bg       $bg
+client.unfocused        $bg     $bg     $fg  $bg       $bg
+client.urgent           $bg     $bg     $fg  $bg       $bg
+client.placeholder      $bg     $bg     $fg  $bg       $bg
+
+client.background       $bg
+
+# Open windows with the floating class in floating mode
+for_window [class="floating"] floating enable
+
+###############
+#             #
+# KEYBINDINGS #
+#             #
+###############
+
+##################
+#                #
+# WM KEYBINDINGS #
+#                #
+##################
+# winblow$ is super-key
+set $mod Mod4
+
+# use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# kill window
+bindsym $mod+Shift+q kill
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# move window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# split in horizontal orientation
+bindsym $mod+b split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen
+bindsym $mod+f fullscreen toggle
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# switch workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# restart i3
+bindsym $mod+Shift+r restart
+
+# exit i3
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# Rezising windows
+bindsym $mod+y resize shrink width 10 px or 10 ppt
+bindsym $mod+u resize grow height 10 px or 10 ppt
+bindsym $mod+i resize shrink height 10 px or 10 ppt
+bindsym $mod+o resize grow width 10 px or 10 ppt
+
+
+#################################
+#                               #
+# PROGRAM LAUNCHING KEYBINDINGS #
+#                               #
+#################################
+# cmus
+bindsym $mod+c exec xdotool search --class "floating" windowkill; exec st -c floating dtach -A .config/dtach/cmus cmus
+
+# dunst
+# $mod+Backspace
+# $mod+shift+backspace
+# $mod+m
+
+# dmenu
+bindsym $mod+d exec dmenu_run -nb "$bg" -nf "$fg" -sb "$fg" -sf "$bg"
+bindsym Menu exec dmenu_run -nb "$bg" -nf "$fg" -sb "$fg" -sf "$bg"
+
+# irssi
+bindsym $mod+shift+i exec xdotool search --class "floating" windowkill; exec st -c floating dtach -A .config/dtach/irssi "irssi"
+
+# libreoffice
+bindsym $mod+w exec libreoffice
+
+# neofetch
+# check if a song is playing and in which case display the album cover of the song as the image
+bindsym $mod+shift+n exec ~/.scripts/neofetch-album-cover
+
+# neomutt
+bindsym $mod+m exec st neomutt
+
+# newsboat
+bindsym $mod+n exec killall newsboat; exec xdotool search --class "floating" windowkill; exec st -c floating newsboat
+
+# nmtui
+bindsym $mod+shift+w exec xdotool search --class "floating" windowkill;  exec st -c floating nmtui
+
+# pulsemixer
+bindsym $mod+p exec xdotool search --class "floating" windowkill; exec st -c floating pulsemixer
+
+# ranger
+bindsym $mod+r exec st ranger
+
+# rtv
+bindsym $mod+shift+t exec xdotool search --class "floating" windowkill; exec st -c floating rtv
+
+# scrot
+bindsym Print exec scrot
+bindsym shift+Print exec scrot -s
+
+# slock
+bindsym $mod+shift+s exec slock
+
+# st
+bindsym $mod+Return exec st
+
+# surf
+bindsym $mod+s exec surf -N -z 1.2 -b duckduckgo.com
+
+# tremc
+bindsym $mod+t exec xdotool search --class "floating" windowkill; exec st -c floating tremc
+
+# tty-clock
+bindsym $mod+shift+c exec xdotool search --class "floating" windowkill; exec st -c floating tty-clock -s -c
+
+# Ukeplan
+bindsym $mod+shift+u exec ~/.scripts/ukeplan; exec notify-send "Opening weekly schedule"
+
+#####################
+#                   #
+# AUDIO KEYBINDINGS #
+#                   #
+#####################
+bindsym F2 exec pulsemixer --change-volume -5; exec notify-send "pulseaudio" "Audio is decreased"
+bindsym F3 exec pulsemixer --change-volume 5; exec notify-send "pulseaudio" "Audio is increased"
+bindsym F4 exec pulsemixer --toggle-mute; exec notify-send "pulseaudio" "Mute is toggled"
+
+bindsym XF86AudioLowerVolume exec pulsemixer --id 0 --change-volume -5; exec notify-send "pulseaudio" "Audio is decreased"
+bindsym XF86AudioRaiseVolume exec pulsemixer --id 0 --change-volume 5; exec notify-send "pulseaudio" "Audio is increased"
+bindsym XF86AudioMute exec pulsemixer --id 0 --toggle-mute; exec notify-send "pulseaudio" "Mute is toggled"
+
+
+##################
+#                #
+# OTHER SETTINGS #
+#                #
+##################
+
+# Define names for default workspaces for which we configure key bindings later on.
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
