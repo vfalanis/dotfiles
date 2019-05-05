@@ -10,7 +10,7 @@ Config files for:
 - compton
 - polybar
 - xinitrc
-- zshcrc
+- zshrc
 
 ## Fonts
 
